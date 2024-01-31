@@ -1,7 +1,6 @@
 package com.kaki.tuto.service;
 
 import com.kaki.tuto.config.UserDetailsImpl;
-import com.kaki.tuto.exceptions.NotFoundException;
 import com.kaki.tuto.model.User;
 import com.kaki.tuto.repo.UserRepository;
 import lombok.RequiredArgsConstructor;

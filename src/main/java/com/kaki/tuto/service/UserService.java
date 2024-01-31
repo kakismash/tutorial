@@ -5,8 +5,6 @@ import com.kaki.tuto.dto.ResponseUserDto;
 import com.kaki.tuto.dto.UpdateUserDto;
 import com.kaki.tuto.exceptions.MissingParamException;
 import com.kaki.tuto.exceptions.NotFoundException;
-import com.kaki.tuto.model.ERole;
-import com.kaki.tuto.model.Role;
 import com.kaki.tuto.model.User;
 import com.kaki.tuto.repo.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,9 +12,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.Collection;
-
 
 @Service
 @RequiredArgsConstructor

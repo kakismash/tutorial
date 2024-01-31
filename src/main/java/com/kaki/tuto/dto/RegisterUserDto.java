@@ -1,14 +1,11 @@
 package com.kaki.tuto.dto;
 
 import com.kaki.tuto.exceptions.MissingParamException;
-import com.kaki.tuto.exceptions.NotFoundException;
-import com.kaki.tuto.model.Role;
 import com.kaki.tuto.model.User;
 import lombok.*;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
-import java.util.Collection;
 
 /**
  * DTO for {@link com.kaki.tuto.model.User}

@@ -1,9 +1,7 @@
 package com.kaki.tuto.dto;
 
 import com.kaki.tuto.model.ERole;
-import com.kaki.tuto.model.User;
 import lombok.Value;
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 import java.util.Collection;
