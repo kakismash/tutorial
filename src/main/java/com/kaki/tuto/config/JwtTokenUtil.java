@@ -92,6 +92,7 @@ public class JwtTokenUtil {
 
     // The extractEmailFromToken() method takes a JWT token as a parameter and returns the email address of the user.
     public String extractEmailFromToken(String token) {
+
         if (token.startsWith("Bearer ")) {
             token = token.substring(7);
         }

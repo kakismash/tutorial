@@ -1,5 +1,7 @@
 package com.kaki.tuto.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.kaki.tuto.model.ERole;
 import com.kaki.tuto.model.Role;
 import com.kaki.tuto.model.User;
@@ -16,6 +18,7 @@ import java.util.Collection;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResponseUserDto implements Serializable {
     Long id;
     String firstname;
@@ -23,6 +26,36 @@ public class ResponseUserDto implements Serializable {
     String email;
     String password;
     Collection<ERole> roles;
+
+    public static ResponseUserDto fromEntityWithoutPassword(User user) {
+        if (user == null) {
+            return null;
+        }
+
+        ResponseUserDto responseUserDto = new ResponseUserDto();
+
+        if (user.getId() != null) {
+            responseUserDto.setId(user.getId());
+        }
+
+        if (StringUtils.isNotEmpty(user.getEmail())) {
+            responseUserDto.setEmail(user.getEmail());
+        }
+
+        if (StringUtils.isNotEmpty(user.getFirstname())) {
+            responseUserDto.setFirstname(user.getFirstname());
+        }
+
+        if (StringUtils.isNotEmpty(user.getLastname())) {
+            responseUserDto.setLastname(user.getLastname());
+        }
+
+        if (user.getRoles() != null) {
+            responseUserDto.setRoles(user.getRoles().stream().map(Role::getName).toList());
+        }
+
+        return responseUserDto;
+    }
 
     public User toEntity() {
         User user = new User();
