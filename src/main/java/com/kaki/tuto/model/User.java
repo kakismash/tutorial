@@ -8,8 +8,8 @@ import java.util.LinkedHashSet;
 
 @Entity
 @Table(name = "users")
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class User {

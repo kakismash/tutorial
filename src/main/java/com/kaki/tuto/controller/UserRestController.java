@@ -1,10 +1,11 @@
 package com.kaki.tuto.controller;
 
-import com.kaki.tuto.dto.ErrorResponseDto;
+import com.kaki.tuto.dto.response.ErrorResponseDto;
 import com.kaki.tuto.dto.RegisterUserDto;
 import com.kaki.tuto.dto.ResponseUserDto;
 import com.kaki.tuto.dto.UpdateUserDto;
 import com.kaki.tuto.exceptions.MissingParamException;
+import com.kaki.tuto.repo.UserRepository;
 import com.kaki.tuto.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -22,6 +23,8 @@ import org.springframework.web.bind.annotation.*;
 public class UserRestController {
 
     private final UserService userService;
+
+    private final UserRepository userRepository;
 
     private final Logger logger = LoggerFactory.getLogger(UserRestController.class.getName());
 
@@ -68,6 +71,12 @@ public class UserRestController {
             errorResponseDto.setSource("Validating user creation");
             return ResponseEntity.badRequest().body(errorResponseDto);
         }
+    }
+
+    @GetMapping("/email/{emailWord}")
+    public ResponseEntity<?> findUserByEmail(@PathVariable("emailWord") String email) {
+        logger.info("UserRestController.findUserByEmail");
+        return ResponseEntity.ok(userService.findAllByEmailContainingIgnoreCase(email));
     }
 
 }

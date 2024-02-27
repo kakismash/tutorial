@@ -1,4 +1,4 @@
-package com.kaki.tuto.dto;
+package com.kaki.tuto.dto.response;
 
 import lombok.*;
 

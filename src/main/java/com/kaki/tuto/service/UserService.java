@@ -13,6 +13,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -82,4 +85,17 @@ public class UserService {
             User user = userDTO.toEntity();
             return ResponseUserDto.fromEntity(saveUser(user));
         }
+
+        public Collection<ResponseUserDto> findAllByEmailContainingIgnoreCase(String email) {
+            Collection<User> users = userRepository.findAllByEmailContainingIgnoreCase(email);
+
+            Collection<ResponseUserDto> usersDTO = new ArrayList<>();
+
+            for (User user : users) {
+                usersDTO.add(ResponseUserDto.fromEntityWithoutPassword(user));
+            }
+
+            return usersDTO;
+        }
+
 }
